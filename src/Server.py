@@ -13,11 +13,23 @@ class service(socketserver.BaseRequestHandler):
     def handle(self):
         data = 'dummy'
         print( "Client connected with ", self.client_address)
+ #       out =  open('out.txt', 'w')
         while len(data):
             data = self.request.recv(1024)
+            print("Client connected with ", self.client_address,"sent: "  , ''.join('{:02x} '.format(x) for x in data), "\n");
             #self.request.send(data)
-            print("Client:",self.client_address, "sent", data)
+#             hex_string = ''.join('{:02x} '.format(x) for x in data)
+#             datathing = "Client:sent" + str(hex_string)  + "\n"
+#             print(datathing)
+#             out.write(datathing)
+#             for j in range(0, 0):
+#                 print(len(data))
+#                 a = j*28
+#                 b = j*28 + 28
+#                 arr = data[a:b]
+#                 print("Client connected with ", self.client_address,"sent sample",j,": "  , ''.join('{:02x} '.format(x) for x in arr), "\n");
 
+            
         print("Client exited")
         self.request.close()
 
